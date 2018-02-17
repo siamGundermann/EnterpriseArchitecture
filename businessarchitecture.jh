@@ -1,0 +1,46 @@
+
+
+entity BusinessService {
+	id Integer required
+    name String
+    generic Boolean
+    defintion String
+    comment String
+}
+
+entity BusinessFunction {
+	id Integer required
+    name String
+    generic Boolean
+    defintion String
+    comment String
+}
+
+entity BusinessData {
+	id Integer required
+    name String
+    generic Boolean
+    defintion String
+    comment String
+}
+
+entity InformationSystemService {
+	id Integer required
+    name String
+    generic Boolean
+    defintion String
+    comment String
+}
+relationship ManyToMany {
+    BusinessService{businessFunction} to BusinessFunction{businessService}
+    BusinessFunction{businessData} to BusinessData{businessFunction}
+}
+
+relationship OneToOne {
+	BusinessFunction to InformationSystemService
+}
+
+// Set service options to all except few
+service all with serviceClass
+// Set an angular suffix
+angularSuffix * with mySuffix
